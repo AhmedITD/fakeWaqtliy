@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waqitly API Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #2980b9;
+            margin-top: 25px;
+        }
+        .endpoint {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .method {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+            min-width: 60px;
+            text-align: center;
+        }
+        .get { background-color: #28a745; }
+        .post { background-color: #007bff; }
+        .put { background-color: #ffc107; color: #212529; }
+        .patch { background-color: #6c757d; }
+        .delete { background-color: #dc3545; }
+        .url {
+            font-family: 'Courier New', monospace;
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .table th, .table td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .nav {
+            background: #343a40;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .nav a:hover {
+            background: #495057;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #17a2b8;
+            color: white;
+            border-radius: 10px;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏢 Waqitly API Documentation</h1>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <span style="background: #28a745; color: white; padding: 5px 15px; border-radius: 15px; font-size: 0.9em;">
+                🟢 API Live & Ready
+            </span>
+        </div>
+        
+        <div class="nav">
+            <a href="#overview">Overview</a>
+            <a href="#categories">Categories</a>
+            <a href="#organizations">Organizations</a>
+            <a href="#spaces">Spaces</a>
+            <a href="#services">Services</a>
+            <a href="#bookings">Bookings</a>
+            <a href="#reservations">Reservations</a>
+            <a href="#reviews">Reviews</a>
+            <a href="/api/v1" target="_blank" style="background: #28a745; margin-left: 20px;">🚀 Live API</a>
+        </div>
+
+        <section id="overview">
+            <h2>📋 Overview</h2>
+            <p><strong>Base URL:</strong> <code>http://localhost:8001/api/v1</code></p>
+            <p><strong>Content-Type:</strong> <code>application/json</code></p>
+            <p><strong>Total Endpoints:</strong> <span class="badge">38</span></p>
+            
+            <h3>🚀 Quick Access</h3>
+            <div style="display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap;">
+                <a href="/api/v1/categories" target="_blank" style="background: #17a2b8; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 0.9em;">📁 Categories</a>
+                <a href="/api/v1/organizations" target="_blank" style="background: #6f42c1; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 0.9em;">🏢 Organizations</a>
+                <a href="/api/v1/spaces" target="_blank" style="background: #fd7e14; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 0.9em;">🏠 Spaces</a>
+                <a href="/api/v1/services" target="_blank" style="background: #20c997; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 0.9em;">🛠️ Services</a>
+                <a href="/api/v1/bookings" target="_blank" style="background: #e83e8c; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 0.9em;">📅 Bookings</a>
+                <a href="/api/v1/reservations" target="_blank" style="background: #6610f2; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 0.9em;">📋 Reservations</a>
+                <a href="/api/v1/reviews" target="_blank" style="background: #dc3545; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-size: 0.9em;">⭐ Reviews</a>
+            </div>
+            
+            <h3>Response Format</h3>
+            <pre>{
+    "success": true|false,
+    "data": {...},
+    "message": "Success/Error message",
+    "errors": {...} // Only on validation errors
+}</pre>
+
+            <h3>HTTP Status Codes</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>200</td><td>OK - Request successful</td></tr>
+                    <tr><td>201</td><td>Created - Resource created</td></tr>
+                    <tr><td>404</td><td>Not Found - Resource not found</td></tr>
+                    <tr><td>422</td><td>Validation failed</td></tr>
+                    <tr><td>500</td><td>Internal server error</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="categories">
+            <h2>📁 Categories API</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/categories</span>
+                <p>Get all categories with associated spaces</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="url">/categories</span>
+                <p>Create a new category</p>
+                <div class="code-block">
+{
+    "name": "Meeting Rooms",
+    "image": "https://example.com/image.jpg"
+}
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/categories/{id}</span>
+                <p>Get specific category details</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="url">/categories/{id}</span>
+                <p>Update category information</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="url">/categories/{id}</span>
+                <p>Delete category (fails if has spaces)</p>
+            </div>
+        </section>
+
+        <section id="organizations">
+            <h2>🏢 Organizations API</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/organizations</span>
+                <p>Get all organizations</p>
+                <p><strong>Query Params:</strong> search</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="url">/organizations</span>
+                <p>Create organization with locations</p>
+                <div class="code-block">
+{
+    "name": "Tech Hub",
+    "owner_id": 1,
+    "description": "Modern workspace",
+    "email": "contact@techhub.com",
+    "locations": [
+        {
+            "latitude": 33.270713,
+            "longitude": 44.374251,
+            "address": "Baghdad, Iraq"
+        }
+    ]
+}
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/organizations/{id}</span>
+                <p>Get organization details</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="url">/organizations/{id}</span>
+                <p>Update organization</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="url">/organizations/{id}</span>
+                <p>Delete organization</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/organizations/{id}/spaces</span>
+                <p>Get organization spaces</p>
+            </div>
+        </section>
+
+        <section id="spaces">
+            <h2>🏠 Spaces API</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/spaces</span>
+                <p>Get spaces with advanced filtering</p>
+                <p><strong>Query Params:</strong> search, category_id, organization_id, min_capacity, max_capacity, min_price, max_price, latitude, longitude, radius, sort_by, sort_order, per_page</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="url">/spaces</span>
+                <p>Create space with locations, images, and services</p>
+                <div class="code-block">
+{
+    "name": "Conference Room A",
+    "description": "Large meeting room",
+    "capacity": 20,
+    "price_per_hour": 25000,
+    "category_id": 1,
+    "organization_id": 1,
+    "locations": [...],
+    "images": [...],
+    "services": [...]
+}
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/spaces/{id}</span>
+                <p>Get space with ratings and reviews</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="url">/spaces/{id}</span>
+                <p>Update space information</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="url">/spaces/{id}</span>
+                <p>Delete space</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/spaces/{id}/stats</span>
+                <p>Get space rating statistics</p>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>🛠️ Services API</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/services</span>
+                <p>Get all services</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="url">/services</span>
+                <p>Create service</p>
+                <div class="code-block">
+{
+    "name": "WiFi"
+}
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/services/{id}</span>
+                <p>Get service details</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="url">/services/{id}</span>
+                <p>Update service</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="url">/services/{id}</span>
+                <p>Delete service</p>
+            </div>
+        </section>
+
+        <section id="bookings">
+            <h2>📅 Bookings API</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/bookings</span>
+                <p>Get bookings with filtering</p>
+                <p><strong>Query Params:</strong> user_id, space_id, start_date, end_date</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="url">/bookings</span>
+                <p>Create booking with availability check</p>
+                <div class="code-block">
+{
+    "user_id": 1,
+    "space_id": 1,
+    "date": "2025-12-25",
+    "start_time": "09:00:00",
+    "end_time": "17:00:00",
+    "total_price": 200000,
+    "services": [...]
+}
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/bookings/{id}</span>
+                <p>Get booking details</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="url">/bookings/{id}</span>
+                <p>Update booking (future only)</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="url">/bookings/{id}</span>
+                <p>Cancel booking (future only)</p>
+            </div>
+        </section>
+
+        <section id="reservations">
+            <h2>📋 Reservations API</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/reservations</span>
+                <p>Get reservations with filtering</p>
+                <p><strong>Query Params:</strong> user_id, space_id, status, start_date, end_date</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="url">/reservations</span>
+                <p>Create reservation</p>
+                <div class="code-block">
+{
+    "user_id": 1,
+    "space_id": 1,
+    "date": "2025-12-25",
+    "start_time": "09:00:00",
+    "end_time": "17:00:00",
+    "total_price": 200000,
+    "details": [...]
+}
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/reservations/{id}</span>
+                <p>Get reservation details</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="url">/reservations/{id}</span>
+                <p>Update reservation</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method patch">PATCH</span>
+                <span class="url">/reservations/{id}/cancel</span>
+                <p>Cancel reservation</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="url">/reservations/{id}</span>
+                <p>Delete reservation</p>
+            </div>
+        </section>
+
+        <section id="reviews">
+            <h2>⭐ Reviews API</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/reviews</span>
+                <p>Get reviews with filtering</p>
+                <p><strong>Query Params:</strong> user_id, space_id, min_rating</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="url">/reviews</span>
+                <p>Create review (one per user/space)</p>
+                <div class="code-block">
+{
+    "rating": 5,
+    "review": "Excellent space!",
+    "user_id": 1,
+    "space_id": 1
+}
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="url">/reviews/{id}</span>
+                <p>Get review details</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="url">/reviews/{id}</span>
+                <p>Update review</p>
+            </div>
+
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="url">/reviews/{id}</span>
+                <p>Delete review</p>
+            </div>
+        </section>
+
+        <section id="testing">
+            <h2>🧪 Quick Testing</h2>
+            <h3>cURL Examples</h3>
+            
+            <h4>Create Category</h4>
+            <pre>curl -X POST http://localhost:8001/api/v1/categories \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Meeting Rooms", "image": "https://example.com/image.jpg"}'</pre>
+
+            <h4>Search Spaces by Location</h4>
+            <pre>curl "http://localhost:8001/api/v1/spaces?latitude=33.27&longitude=44.37&radius=5"</pre>
+
+            <h4>Create Booking</h4>
+            <pre>curl -X POST http://localhost:8001/api/v1/bookings \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id": 1,
+    "space_id": 1,
+    "date": "2025-12-25",
+    "start_time": "14:00:00",
+    "end_time": "18:00:00",
+    "total_price": 100000
+  }'</pre>
+
+            <h3>Postman Collection</h3>
+            <p>Import the provided <code>Waqitly_API.postman_collection.json</code> file into Postman for comprehensive testing.</p>
+        </section>
+
+        <footer style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #dee2e6; color: #6c757d;">
+            <p>Waqitly API Documentation - Complete CRUD Operations for Space Booking System</p>
+        </footer>
+    </div>
+</body>
+</html>

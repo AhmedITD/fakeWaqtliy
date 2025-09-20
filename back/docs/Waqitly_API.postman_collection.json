@@ -1,0 +1,754 @@
+{
+	"info": {
+		"_postman_id": "waqitly-api-collection",
+		"name": "Waqitly API Collection",
+		"description": "Complete API collection for Waqitly space booking system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "categories"]
+						}
+					}
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Meeting Rooms\",\n    \"image\": \"https://example.com/meeting-room.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "categories"]
+						}
+					}
+				},
+				{
+					"name": "Get Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "categories", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Conference Rooms\",\n    \"image\": \"https://example.com/conference-room.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "categories", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/categories/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "categories", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Organizations",
+			"item": [
+				{
+					"name": "Get All Organizations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/organizations?search=tech",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "organizations"],
+							"query": [
+								{
+									"key": "search",
+									"value": "tech"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Organization",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tech Hub\",\n    \"owner_id\": 1,\n    \"description\": \"Modern workspace for tech companies\",\n    \"email\": \"contact@techhub.com\",\n    \"image\": \"https://example.com/logo.jpg\",\n    \"locations\": [\n        {\n            \"latitude\": 33.270713,\n            \"longitude\": 44.374251,\n            \"address\": \"123 Tech Street, Baghdad, Iraq\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/organizations",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "organizations"]
+						}
+					}
+				},
+				{
+					"name": "Get Organization",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/organizations/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "organizations", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Organization",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Tech Hub\",\n    \"description\": \"Updated description\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/organizations/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "organizations", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Organization",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/organizations/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "organizations", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get Organization Spaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/organizations/1/spaces",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "organizations", "1", "spaces"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Spaces",
+			"item": [
+				{
+					"name": "Get All Spaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/spaces?search=conference&min_capacity=10&sort_by=price_per_hour&sort_order=asc&per_page=10",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "spaces"],
+							"query": [
+								{
+									"key": "search",
+									"value": "conference"
+								},
+								{
+									"key": "min_capacity",
+									"value": "10"
+								},
+								{
+									"key": "sort_by",
+									"value": "price_per_hour"
+								},
+								{
+									"key": "sort_order",
+									"value": "asc"
+								},
+								{
+									"key": "per_page",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Search Spaces by Location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/spaces?latitude=33.270713&longitude=44.374251&radius=5",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "spaces"],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "33.270713"
+								},
+								{
+									"key": "longitude",
+									"value": "44.374251"
+								},
+								{
+									"key": "radius",
+									"value": "5"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Space",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Executive Meeting Room\",\n    \"description\": \"Premium meeting space with city view\",\n    \"size\": 40,\n    \"capacity\": 12,\n    \"floor\": \"5th Floor\",\n    \"price_per_hour\": 50000,\n    \"thumbnail\": \"https://example.com/thumbnail.jpg\",\n    \"category_id\": 1,\n    \"organization_id\": 1,\n    \"locations\": [\n        {\n            \"latitude\": 33.270713,\n            \"longitude\": 44.374251,\n            \"location_written\": \"Building A, Floor 5, Room 501\"\n        }\n    ],\n    \"images\": [\n        {\n            \"image\": \"https://example.com/image1.jpg\",\n            \"low_res_image\": \"https://example.com/thumb1.jpg\"\n        }\n    ],\n    \"services\": [\n        {\n            \"service_id\": 1,\n            \"price\": 10000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/spaces",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "spaces"]
+						}
+					}
+				},
+				{
+					"name": "Get Space",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/spaces/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "spaces", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Space",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Conference Room\",\n    \"capacity\": 15,\n    \"price_per_hour\": 45000\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/spaces/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "spaces", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Space",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/spaces/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "spaces", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get Space Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/spaces/1/stats",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "spaces", "1", "stats"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "Get All Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/services",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "services"]
+						}
+					}
+				},
+				{
+					"name": "Create Service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"WiFi\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/services",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "services"]
+						}
+					}
+				},
+				{
+					"name": "Get Service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/services/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "services", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Service",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"High-Speed WiFi\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/services/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "services", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Service",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/services/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "services", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Get All Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings?user_id=1&start_date=2025-12-01&end_date=2025-12-31",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "bookings"],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-12-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-12-31"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"space_id\": 1,\n    \"date\": \"2025-12-25\",\n    \"start_time\": \"09:00:00\",\n    \"end_time\": \"17:00:00\",\n    \"total_price\": 200000,\n    \"services\": [\n        {\n            \"space_service_id\": 1,\n            \"quantity\": 2,\n            \"price\": 10000\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "bookings"]
+						}
+					}
+				},
+				{
+					"name": "Get Booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "bookings", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Booking",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date\": \"2025-12-26\",\n    \"start_time\": \"10:00:00\",\n    \"end_time\": \"16:00:00\",\n    \"total_price\": 150000\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "bookings", "1"]
+						}
+					}
+				},
+				{
+					"name": "Cancel Booking",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/bookings/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "bookings", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Reservations",
+			"item": [
+				{
+					"name": "Get All Reservations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reservations?status=pending&user_id=1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reservations"],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending"
+								},
+								{
+									"key": "user_id",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Reservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"space_id\": 1,\n    \"date\": \"2025-12-25\",\n    \"start_time\": \"09:00:00\",\n    \"end_time\": \"17:00:00\",\n    \"total_price\": 200000,\n    \"details\": [\n        {\n            \"description\": \"Special Requirements\",\n            \"value\": \"Need projector and whiteboard setup\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/reservations",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reservations"]
+						}
+					}
+				},
+				{
+					"name": "Get Reservation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reservations/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reservations", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Reservation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"confirmed\",\n    \"date\": \"2025-12-26\",\n    \"start_time\": \"10:00:00\",\n    \"end_time\": \"16:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/reservations/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reservations", "1"]
+						}
+					}
+				},
+				{
+					"name": "Cancel Reservation",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reservations/1/cancel",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reservations", "1", "cancel"]
+						}
+					}
+				},
+				{
+					"name": "Delete Reservation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reservations/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reservations", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Get All Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reviews?space_id=1&min_rating=4",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reviews"],
+							"query": [
+								{
+									"key": "space_id",
+									"value": "1"
+								},
+								{
+									"key": "min_rating",
+									"value": "4"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 5,\n    \"review\": \"Excellent space with great amenities! The location is perfect and the staff was very helpful.\",\n    \"user_id\": 1,\n    \"space_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/reviews",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reviews"]
+						}
+					}
+				},
+				{
+					"name": "Get Review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reviews/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reviews", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Review",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 4,\n    \"review\": \"Good space, but could use better lighting.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/reviews/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reviews", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/reviews/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "reviews", "1"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Response time is less than 2000ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"});",
+					"",
+					"pm.test(\"Response has success field\", function () {",
+					"    const jsonData = pm.response.json();",
+					"    pm.expect(jsonData).to.have.property('success');",
+					"});",
+					"",
+					"pm.test(\"Response has message field\", function () {",
+					"    const jsonData = pm.response.json();",
+					"    pm.expect(jsonData).to.have.property('message');",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8001",
+			"type": "string"
+		}
+	]
+}

@@ -9,6 +9,7 @@ use App\Models\SpaceImage;
 use App\Models\SpaceService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rule;
 
 class SpaceController extends Controller
